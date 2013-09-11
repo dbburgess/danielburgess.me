@@ -181,6 +181,17 @@ nav a:hover {
     margin-top: 0.5em;
 }
 
+.social-icons img {
+    width: 32px;
+    height: 32px;
+}
+
+.social-icons img:hover {
+    -webkit-box-shadow: 0 0 4px 2px #aab233;
+       -moz-box-shadow: 0 0 4px 2px #aab233;
+            box-shadow: 0 0 4px 2px #aab233;
+}
+
 .content-tab {
     display: none;
 }
