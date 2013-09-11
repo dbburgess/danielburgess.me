@@ -126,13 +126,13 @@ nav a {
     background: #aab233;
 }
 
-nav a:hover,
-nav a:visited {
-    color: white;
+nav a:hover, nav a.selected:hover {
+    text-decoration: underline;
+    background: #3284a0;
 }
 
-nav a:hover {
-    text-decoration: underline;
+nav a.selected {
+    background: #8433a2;
 }
 
 /* ==============
