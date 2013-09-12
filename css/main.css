@@ -73,6 +73,7 @@ body {
 }
 
 .wrapper {
+    position: relative;
     width: 90%;
     margin: 0 5%;
 }
@@ -190,6 +191,8 @@ nav a.selected {
 
 .content-tab {
     display: none;
+    position: absolute;
+    width: 100%;
 }
 
 /* ===============
