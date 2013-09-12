@@ -1,12 +1,14 @@
 $(document).ready(function() {
+    // Handles changing the view for navigation.
     $(window).hashchange(function() {
-        var currentHash = location.hash ? location.hash : '#home';
+        var newHash = location.hash ? location.hash : '#home';
 
-        $('.content-tab').not(currentHash).hide();
-        $(currentHash).show();
+        $('.content-tab').not(newHash).hide();
+        $(newHash).show();
 
-        $('.nav').removeClass('selected').filter('.' + currentHash.substring(1)).addClass('selected');
+        $('.nav').removeClass('selected').filter('.' + newHash.substring(1)).addClass('selected');
     });
 
+    // Trigger the view to update onload, in case there is a hash in the url onload.
     $(window).hashchange();
 });
