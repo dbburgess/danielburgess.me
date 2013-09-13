@@ -7,6 +7,11 @@ $(document).ready(function() {
         $('nav').slideUp(callback);
     };
 
+    // A method to update the height of the main div, in case it isn't tall enough.
+    var updateHeight = function() {
+        $('.main').css('height', $('.content-tab:visible').outerHeight() + 'px');
+    };
+
     // Handle clicks on the nav menu button on smaller screens.
     $('button.nav-toggle').click(function() {
         // Check if we're already expanded and close / open accordingly.
@@ -33,6 +38,7 @@ $(document).ready(function() {
         if (currentHash === "") {
             $(newHash).show();
             currentHash = newHash;
+            updateHeight();
             return;
         }
 
@@ -60,7 +66,7 @@ $(document).ready(function() {
                 .show()
                 .animate({
                     "left" : 0
-            }, 300);
+                }, 300, updateHeight);
         };
 
         // Hide the expanded menu on smaller screens, if it is expanded.
@@ -74,6 +80,9 @@ $(document).ready(function() {
         // Update the current hash.
         currentHash = newHash;
     });
+
+    // Bind a window resize event to update the main div height if necessary.
+    $(window).resize(updateHeight);
 
     // Trigger the view to update onload, in case there is a hash in the url onload.
     $(window).hashchange();
