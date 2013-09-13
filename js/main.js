@@ -28,6 +28,13 @@ $(document).ready(function() {
         var newHash = (location.hash ? location.hash : '#home');
         var $newContent = $(newHash);
 
+        // Log a pageview in Google Analytics.
+        ga('send', {
+            'hitType': 'pageview',
+            'page': '/' + newHash,
+            'title': $('nav a.' + newHash.substring(1)).text()
+        });
+
         // Update the navigation menu view with the new selection.
         $('.nav').removeClass('selected')
             .filter('.' + newHash.substring(1))
