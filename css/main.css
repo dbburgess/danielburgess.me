@@ -258,9 +258,62 @@ nav a.selected {
    Author's custom styles
    ========================================================================== */
 
+#contact ul li {
+    list-style-type: none;
+    margin-bottom: 0.5em;
+}
 
+#contact ul li img {
+    margin-right: 0.5em;
+}
 
+#resume h1 .dl {
+    float: right;
+}
 
+#resume h1 .dl img {
+    margin-left: 0.25em;
+}
+
+#resume h1 .dl a {
+    color: #063140;
+    text-decoration: none;
+}
+
+#resume h1 .dl a:hover {
+    text-decoration: underline;
+}
+
+#resume h2 {
+    border-bottom: 3px solid #063140;
+    font-size: 1.7em;
+}
+
+#resume h3 {
+    border-bottom: 2px dotted #063140;
+    font-weight: normal;
+    font-size: 1.2em;
+    margin-bottom: 0.5em;
+}
+
+#resume .date {
+    float: right;
+}
+
+#resume ul {
+    margin-top: 0;
+}
+
+#resume ul li {
+    border-bottom: 1px dashed gray;
+    list-style-type: none;
+    line-height: 1.5em;
+    margin-bottom: 0.2em;
+}
+
+#resume ul li:last-child {
+    border-bottom: 0;
+}
 
 
 
