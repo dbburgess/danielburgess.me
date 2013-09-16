@@ -378,11 +378,16 @@ nav a.selected {
     WIDE: Fixed Header
    ==================== */
 
+    .main-container {
+        margin: -7.2em auto -3em;
+    }
+
     .push-header {
         height: 7.2em;
     }
 
     .header-container {
+        position: relative;
         height: 7.2em;
     }
 }
@@ -394,6 +399,7 @@ nav a.selected {
     }
 
     .header-container {
+        position: fixed;
         height: 4.5em;
     }
 
