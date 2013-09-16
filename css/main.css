@@ -210,7 +210,8 @@ nav a.selected {
 }
 
 .footer-container {
-    height: 3em;
+    min-height: 3em;
+    height: auto;
 }
 
 .footer-container footer {
@@ -218,6 +219,7 @@ nav a.selected {
 }
 
 .copy {
+    float: left;
     color: #fff;
     font-weight: normal;
     display: inline-block;
