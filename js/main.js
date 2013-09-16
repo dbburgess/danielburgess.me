@@ -40,9 +40,10 @@ $(document).ready(function() {
             .filter('.' + newHash.substring(1))
             .addClass('selected');
 
-        // Check to see if this is the first hash change (i.e., onload).
+        // Check to see if this is the first hash change (i.e., onload),
+        // or if it is for some reason not any different...
         // If so, we'll skip fancy animations and such.
-        if (currentHash === "") {
+        if (currentHash === "" || currentHash === newHash) {
             $(newHash).show();
             currentHash = newHash;
             updateHeight();
