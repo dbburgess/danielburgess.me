@@ -221,15 +221,17 @@ nav a.selected {
 .copy {
     float: left;
     color: #fff;
+    font-size: 0.75em;
     font-weight: normal;
     display: inline-block;
-    margin: 0.75em 0 0;
+    margin: 0.75em 0 0 -4%;
 }
 
 .social-icons {
     float: right;
     display: inline-block;
     margin-top: 0.5em;
+    margin-right: -4%;
 }
 
 .social-icons img {
@@ -390,6 +392,15 @@ nav a.selected {
     .header-container {
         position: relative;
         height: 7.2em;
+    }
+
+    .copy {
+        margin: 0.75em 0 0;
+        font-size: 1em;
+    }
+
+    .social-icons {
+        margin-right: 0;
     }
 }
 
