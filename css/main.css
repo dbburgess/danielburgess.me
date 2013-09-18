@@ -321,15 +321,36 @@ nav a.selected {
     border-bottom: 0;
 }
 
+.portrait img {
+    width: 100%;
+}
 
+.grid {
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 2%;
+}
 
+.grid:last-child {
+    margin-right: 0;
+}
 
+.grid img {
+    width: 100%;
+}
 
+.grid.sm-full {
+    width: 100%;
+}
 
+.row-spacer {
+    margin-top: 2em;
+}
 
-
-
-
+#home img.mast {
+    width: 100%;
+    margin-bottom: 2%;
+}
 
 /* ==========================================================================
    Media Queries
@@ -364,6 +385,35 @@ nav a.selected {
 
     .nav-toggle {
         display: none;
+    }
+
+    .portrait {
+        display: inline-block;
+        margin-right: 2%;
+        margin-top: 6%;
+        width: 20%;
+    }
+
+    .portrait-companion {
+        display: inline-block;
+        vertical-align: top;
+        width: 78%;
+    }
+
+    .grid {
+        margin-top: 2em;
+    }
+
+    .grid.top-row {
+        margin-top: 0;
+    }
+
+    .grid.med-half {
+        width: 49%;
+    }
+
+    .grid.med-row-end {
+        margin-right: 0;
     }
 
 /* ========================
@@ -420,6 +470,31 @@ nav a.selected {
         min-height: 100%;
         margin: 0 auto -3em;
         height: auto;
+    }
+
+    .portrait {
+        display: inline-block;
+        margin-right: 2%;
+        margin-top: 0;
+        width: 14%;
+    }
+
+    .portrait-companion {
+        display: inline-block;
+        vertical-align: top;
+        width: 84%;
+    }
+
+    .grid.med-row-end {
+        margin-right: 2%;
+    }
+
+    .grid.lg-one-third {
+        width: 32%;
+    }
+
+    .grid.lg-two-third {
+        width: 66%;
     }
 
 /* ====================

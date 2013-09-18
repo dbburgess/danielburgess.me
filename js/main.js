@@ -94,4 +94,7 @@ $(document).ready(function() {
 
     // Trigger the view to update onload, in case there is a hash in the url onload.
     $(window).hashchange();
+
+    // Update the height once the images are loaded, too.
+    $(window).on("load", updateHeight);
 });
