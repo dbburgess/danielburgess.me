@@ -4,6 +4,7 @@
 }
 
 .subTitle {
+  position: relative;
   text-align: left;
   margin-top: 0;
 }
