@@ -74,6 +74,16 @@ class App extends Component {
           : 1.0
       );
 
+      // This allows us to customize when in a staggered animation the next
+      // animation should be triggered. Just add a `triggeredAt` property
+      // to the data object of the next object. The default value if this
+      // isn't provided is 95%.
+      const triggerProgress = (
+        style.data && style.data.triggeredAt
+          ? style.data.triggeredAt
+          : 0.95
+      );
+
       // Return a new style object with all of the important data copied.
       // In the event the preceding style's progress is complete (or nearly so),
       // we'll go ahead and start the spring to move our progress to 100%.
@@ -83,7 +93,7 @@ class App extends Component {
         data: style.data,
         style: {
           progress: (
-            precedingProgress >= 0.95
+            precedingProgress >= triggerProgress
               ? spring(1.0)
               : style.style.progress
           )
