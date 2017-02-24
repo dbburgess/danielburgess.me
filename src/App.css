@@ -1,9 +1,9 @@
 .app {
   position: absolute;
   max-width: 45em;
-  width: 50%;
+  width: 75%;
   top: 50%;
-  left: 50%;
+  left: 55%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
