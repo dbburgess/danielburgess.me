@@ -187,7 +187,7 @@ class App extends Component {
                 <h1 className="mainTitle" style={ mainStyle }>Daniel Burgess</h1>
                 <h3 className="subTitle" style={ subStyle }>Software Engineer</h3>
                 <p className="summary" style={ summaryStyle }>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra quam a ullamcorper luctus. Mauris suscipit mauris vitae sodales porta. In vel aliquet lorem, non blandit nisl. Mauris in ornare diam. Vivamus nec nisi sed turpis accumsan tincidunt. Proin sodales justo id elementum ultricies.
+                  Daniel is a full stack software engineer with a broad set of skills and experience in numerous languages, platforms, and frameworks. Whether it is mobile, backend, or web, Daniel's experience allows him to rapidly learn new tech and gain a working understanding of complex systems quickly. With an entrepreneurial background, he has a rare understanding of how to balance a meticulous approach to technical design and implementation with practical business needs.
                 </p>
               </div>
             );
