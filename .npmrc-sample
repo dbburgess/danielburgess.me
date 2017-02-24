@@ -1,0 +1,3 @@
+host = "some.web.host"
+user = "ausernamegoeshere"
+path = "/etc/www/mysite/html"
