@@ -71,5 +71,7 @@ p.summary {
   padding: 0.25em 0 0;
   border-top: 0.15em solid white;
   transform-origin: left center;
+  line-height: 1.35em;
+  word-spacing: 0.05em;
 }
 
