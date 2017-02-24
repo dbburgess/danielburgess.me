@@ -131,7 +131,7 @@ class App extends Component {
 
     return (
       <li key={ icon.className } style={ style }>
-        <a href={ icon.href } aria-label={ icon.label }>
+        <a href={ icon.href } target="_blank" aria-label={ icon.label }>
           <i className={ "fa fa-lg " + icon.className } aria-hidden="true"></i>
           <span>{ icon.label }</span>
         </a>
@@ -167,11 +167,11 @@ class App extends Component {
             // Aggregate the icon metadata and styles, since their markup is all
             // the same, we can just easily iterate over this to output everything.
             const icons = [
-              { progress: this.getStyleByKey(styles, 'icon1').progress, className: 'fa-github', href: '#github', label: 'Github' },
-              { progress: this.getStyleByKey(styles, 'icon2').progress, className: 'fa-stack-overflow', href: '#stackoverflow', label: 'Stack Overflow' },
-              { progress: this.getStyleByKey(styles, 'icon3').progress, className: 'fa-linkedin', href: '#linkedin', label: 'LinkedIn' },
-              { progress: this.getStyleByKey(styles, 'icon4').progress, className: 'fa-twitter', href: '#twitter', label: 'Twitter' },
-              { progress: this.getStyleByKey(styles, 'icon5').progress, className: 'fa-facebook', href: '#facebook', label: 'Facebook' },
+              { progress: this.getStyleByKey(styles, 'icon1').progress, className: 'fa-github', href: 'https://github.com/dbburgess', label: 'Github' },
+              { progress: this.getStyleByKey(styles, 'icon2').progress, className: 'fa-stack-overflow', href: 'https://stackoverflow.com/users/5191100/dbburgess', label: 'Stack Overflow' },
+              { progress: this.getStyleByKey(styles, 'icon3').progress, className: 'fa-linkedin', href: 'https://linkedin.com/in/dbburgess', label: 'LinkedIn' },
+              { progress: this.getStyleByKey(styles, 'icon4').progress, className: 'fa-twitter', href: 'https://twitter.com/dbburgess', label: 'Twitter' },
+              { progress: this.getStyleByKey(styles, 'icon5').progress, className: 'fa-facebook', href: 'https://facebook.com/dbburgess', label: 'Facebook' },
             ];
 
             return (
