@@ -43,7 +43,7 @@ class App extends Component {
   // a definition, we can easily only start animating certain elements once the
   // others have reached a certain level of completion.
   getDefaultStyles() {
-    return [
+    const styles = [
       {
         key: 'mainTitle',
         style: { progress: 0 },
@@ -53,7 +53,28 @@ class App extends Component {
         style: { progress: 0 },
         data: { precededBy: 'mainTitle' },
       },
+      {
+        key: 'divider',
+        style: { progress: 0 },
+        data: { precededBy: 'subTitle' },
+      },
+      {
+        key: 'summary',
+        style: { progress: 0 },
+        data: { precededBy: 'divider', triggeredAt: 0.55 },
+      },
     ];
+
+    // Setup the icon styles using a loop, since they're all super similar.
+    for (var i = 1; i <= 5; i++) {
+      styles.push({
+        key: 'icon' + i,
+        style: { progress: 0 },
+        data: { precededBy: 'divider', triggeredAt: (0.20 * i - 0.05) },
+      });
+    }
+
+    return styles;
   }
 
   // Given a previous set of styles, returns an updated set of styles.
@@ -102,24 +123,71 @@ class App extends Component {
     });
   }
 
+  renderIcon(icon) {
+    const style = {
+      right: (-100 * (1 - icon.progress)) + '%',
+      opacity: icon.progress,
+    };
+
+    return (
+      <li key={ icon.className } style={ style }>
+        <a href={ icon.href } aria-label={ icon.label }>
+          <i className={ "fa fa-lg " + icon.className } aria-hidden="true"></i>
+        </a>
+      </li>
+    );
+  }
+
   render() {
     return (
       <TransitionMotion defaultStyles={this.getDefaultStyles()} styles={this.getStyles}>
-        {styles => {
-          // Retrieve all of the custom styles by their key.
-          const mainStyle = this.getStyleByKey(styles, 'mainTitle');
-          const subStyle = this.getStyleByKey(styles, 'subTitle');
+        {
+          styles => {
+            // Setup all of the elements animation styles by their key and current progress.
+            const mainStyle = ((progress) => ({
+              opacity: progress,
+              transform: 'scale(' + progress + ')',
+            }))(this.getStyleByKey(styles, 'mainTitle').progress);
 
-          return <div className="app">
-            <h1 className="mainTitle" style={{
-              opacity: mainStyle.progress,
-              transform: 'scale(' + mainStyle.progress + ')',
-            }}>Daniel Burgess</h1>
-            <h3 className="subTitle" style={{
-              opacity: subStyle.progress,
-              top: (25 * (subStyle.progress - 1)) + 'px',
-            }}>Software Engineer</h3>
-          </div>
+            const subStyle = ((progress) => ({
+              opacity: progress,
+              top: (-1.5 * (1 - progress)) + 'em',
+            }))(this.getStyleByKey(styles, 'subTitle').progress);
+
+            const dividerStyle = ((progress) => ({
+              height: (100 * progress) + '%'
+            }))(this.getStyleByKey(styles, 'divider').progress);
+
+            const summaryStyle = ((progress) => ({
+              opacity: progress,
+              transform: 'scaleX(' + progress + ')',
+            }))(this.getStyleByKey(styles, 'summary').progress);
+
+            // Aggregate the icon metadata and styles, since their markup is all
+            // the same, we can just easily iterate over this to output everything.
+            const icons = [
+              { progress: this.getStyleByKey(styles, 'icon1').progress, className: 'fa-github', href: '#github', label: 'Github' },
+              { progress: this.getStyleByKey(styles, 'icon2').progress, className: 'fa-stack-overflow', href: '#stackoverflow', label: 'Stack Overflow' },
+              { progress: this.getStyleByKey(styles, 'icon3').progress, className: 'fa-linkedin', href: '#linkedin', label: 'LinkedIn' },
+              { progress: this.getStyleByKey(styles, 'icon4').progress, className: 'fa-twitter', href: '#twitter', label: 'Twitter' },
+              { progress: this.getStyleByKey(styles, 'icon5').progress, className: 'fa-facebook', href: '#facebook', label: 'Facebook' },
+            ];
+
+            return (
+              <div className="app">
+                <ul className="social" style={ dividerStyle }>
+                  {
+                    // Render all of the social icons.
+                    icons.map(this.renderIcon)
+                  }
+                </ul>
+                <h1 className="mainTitle" style={ mainStyle }>Daniel Burgess</h1>
+                <h3 className="subTitle" style={ subStyle }>Software Engineer</h3>
+                <p className="summary" style={ summaryStyle }>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra quam a ullamcorper luctus. Mauris suscipit mauris vitae sodales porta. In vel aliquet lorem, non blandit nisl. Mauris in ornare diam. Vivamus nec nisi sed turpis accumsan tincidunt. Proin sodales justo id elementum ultricies.
+                </p>
+              </div>
+            );
           }
         }
       </TransitionMotion>
