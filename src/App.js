@@ -66,11 +66,11 @@ class App extends Component {
     ];
 
     // Setup the icon styles using a loop, since they're all super similar.
-    for (var i = 1; i <= 5; i++) {
+    for (var i = 1; i <= 7; i++) {
       styles.push({
         key: 'icon' + i,
         style: { progress: 0 },
-        data: { precededBy: 'divider', triggeredAt: (0.20 * i - 0.05) },
+        data: { precededBy: 'divider', triggeredAt: (0.14 * i - 0.05) },
       });
     }
 
@@ -167,11 +167,13 @@ class App extends Component {
             // Aggregate the icon metadata and styles, since their markup is all
             // the same, we can just easily iterate over this to output everything.
             const icons = [
-              { progress: this.getStyleByKey(styles, 'icon1').progress, className: 'fa-github', href: 'https://github.com/dbburgess', label: 'Github' },
-              { progress: this.getStyleByKey(styles, 'icon2').progress, className: 'fa-stack-overflow', href: 'https://stackoverflow.com/users/5191100/dbburgess', label: 'Stack Overflow' },
-              { progress: this.getStyleByKey(styles, 'icon3').progress, className: 'fa-linkedin', href: 'https://linkedin.com/in/dbburgess', label: 'LinkedIn' },
-              { progress: this.getStyleByKey(styles, 'icon4').progress, className: 'fa-twitter', href: 'https://twitter.com/dbburgess', label: 'Twitter' },
-              { progress: this.getStyleByKey(styles, 'icon5').progress, className: 'fa-facebook', href: 'https://facebook.com/dbburgess', label: 'Facebook' },
+              { progress: this.getStyleByKey(styles, 'icon1').progress, className: 'fa-envelope-o', href: 'mailto:chat@danielburgess.me', label: 'Email' },
+              { progress: this.getStyleByKey(styles, 'icon2').progress, className: 'fa-github', href: 'https://github.com/dbburgess', label: 'Github' },
+              { progress: this.getStyleByKey(styles, 'icon3').progress, className: 'fa-stack-overflow', href: 'https://stackoverflow.com/users/5191100/dbburgess', label: 'Stack Overflow' },
+              { progress: this.getStyleByKey(styles, 'icon4').progress, className: 'fa-linkedin', href: 'https://linkedin.com/in/dbburgess', label: 'LinkedIn' },
+              { progress: this.getStyleByKey(styles, 'icon5').progress, className: 'fa-twitter', href: 'https://twitter.com/dbburgess', label: 'Twitter' },
+              { progress: this.getStyleByKey(styles, 'icon6').progress, className: 'fa-facebook-official', href: 'https://facebook.com/dbburgess', label: 'Facebook' },
+              { progress: this.getStyleByKey(styles, 'icon7').progress, className: 'fa-file-text-o', href: 'https://dbburgess.github.io/resume', label: 'Résumé' },
             ];
 
             return (
