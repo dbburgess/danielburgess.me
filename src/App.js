@@ -133,6 +133,7 @@ class App extends Component {
       <li key={ icon.className } style={ style }>
         <a href={ icon.href } aria-label={ icon.label }>
           <i className={ "fa fa-lg " + icon.className } aria-hidden="true"></i>
+          <span>{ icon.label }</span>
         </a>
       </li>
     );

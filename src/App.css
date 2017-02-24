@@ -22,10 +22,11 @@ ul.social {
   list-style-type: none;
   position: absolute;
   height: 100%;
-  left: -3em;
+  right: 104%;
   margin: 0 auto;
   border-right: 0.15em solid white;
   padding: 0 0.5em 0;
+  text-align: right;
 }
 
 ul.social li {
@@ -33,11 +34,34 @@ ul.social li {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  white-space: nowrap;
   height: 20%;
+  float: right;
+  clear: both;
 }
 
 ul.social li a {
+  transition: color 0.5s;
+  text-decoration: none;
   color: #fff;
+}
+
+ul.social li a:hover {
+  color: #ff9d00;
+}
+
+ul.social li a span {
+  transition: max-width 0.5s;
+  display: inline-block;
+  margin-left: 0.25em;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 0;
+}
+
+ul.social li a:hover span {
+  max-width: 100%;
 }
 
 p.summary {
