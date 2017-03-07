@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { TransitionMotion, spring } from 'react-motion';
-
 import getStyleByKey from './getStyleByKey';
-
+import Menu from './Menu';
 import './App.css';
 
 class App extends Component {
@@ -107,22 +106,6 @@ class App extends Component {
     });
   }
 
-  renderIcon(icon) {
-    const style = {
-      right: (-100 * (1 - icon.progress)) + '%',
-      opacity: icon.progress,
-    };
-
-    return (
-      <li key={ icon.className } style={ style }>
-        <a href={ icon.href } target="_blank" aria-label={ icon.label }>
-          <i className={ "fa fa-lg " + icon.className } aria-hidden="true"></i>
-          <span>{ icon.label }</span>
-        </a>
-      </li>
-    );
-  }
-
   render() {
     return (
       <TransitionMotion defaultStyles={this.getDefaultStyles()} styles={this.getStyles}>
@@ -139,35 +122,14 @@ class App extends Component {
               top: (-1.5 * (1 - progress)) + 'em',
             }))(getStyleByKey(styles, 'subTitle').progress);
 
-            const dividerStyle = ((progress) => ({
-              height: (100 * progress) + '%'
-            }))(getStyleByKey(styles, 'divider').progress);
-
             const summaryStyle = ((progress) => ({
               opacity: progress,
               transform: 'scaleX(' + progress + ')',
             }))(getStyleByKey(styles, 'summary').progress);
 
-            // Aggregate the icon metadata and styles, since their markup is all
-            // the same, we can just easily iterate over this to output everything.
-            const icons = [
-              { progress: getStyleByKey(styles, 'icon1').progress, className: 'fa-envelope-o', href: 'mailto:chat@danielburgess.me', label: 'Email' },
-              { progress: getStyleByKey(styles, 'icon2').progress, className: 'fa-github', href: 'https://github.com/dbburgess', label: 'Github' },
-              { progress: getStyleByKey(styles, 'icon3').progress, className: 'fa-stack-overflow', href: 'https://stackoverflow.com/users/5191100/dbburgess', label: 'Stack Overflow' },
-              { progress: getStyleByKey(styles, 'icon4').progress, className: 'fa-linkedin', href: 'https://linkedin.com/in/dbburgess', label: 'LinkedIn' },
-              { progress: getStyleByKey(styles, 'icon5').progress, className: 'fa-twitter', href: 'https://twitter.com/dbburgess', label: 'Twitter' },
-              { progress: getStyleByKey(styles, 'icon6').progress, className: 'fa-facebook-official', href: 'https://facebook.com/dbburgess', label: 'Facebook' },
-              { progress: getStyleByKey(styles, 'icon7').progress, className: 'fa-file-text-o', href: 'https://dbburgess.github.io/resume', label: 'Résumé' },
-            ];
-
             return (
               <div className="app">
-                <ul className="social" style={ dividerStyle }>
-                  {
-                    // Render all of the social icons.
-                    icons.map(this.renderIcon)
-                  }
-                </ul>
+                <Menu animationStyles={ styles } />
                 <h1 className="mainTitle" style={ mainStyle }>Daniel Burgess</h1>
                 <h3 className="subTitle" style={ subStyle }>Software Engineer</h3>
                 <p className="summary" style={ summaryStyle }>
