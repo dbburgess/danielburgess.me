@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { TransitionMotion, spring } from 'react-motion';
+
+import getStyleByKey from './getStyleByKey';
+
 import './App.css';
 
 class App extends Component {
@@ -9,25 +12,6 @@ class App extends Component {
 
     // Bind this to the methods that need it.
     this.getStyles = this.getStyles.bind(this);
-  }
-
-  // React Motion has a type called TransitionStyle, which contains transition
-  // information in the form of `{ key: string, data?: any, style: Style}`.
-  // This helper method allows us to extract a style by key, from an array of TransitionStyle.
-  getStyleByKey(styles, key) {
-    // Find the TransitionStyle that contains the provided key.
-    const config = styles.find((style) => {
-      return style.key === key;
-    });
-
-    // Return the style from the TransitionStyle object.
-    // In the event a TransitionStyle was not found, we'll
-    // catch that and just return an empty object.
-    return (
-      config && config.style
-        ? config.style
-        : {}
-    );
   }
 
   // Default styles are essentially just the initial state for React Motion.
@@ -91,7 +75,7 @@ class App extends Component {
       // which should be the case if there was no style to precede it.
       const precedingProgress = (
         style.data && style.data.precededBy
-          ? this.getStyleByKey(prevStyles, style.data.precededBy).progress
+          ? getStyleByKey(prevStyles, style.data.precededBy).progress
           : 1.0
       );
 
@@ -148,32 +132,32 @@ class App extends Component {
             const mainStyle = ((progress) => ({
               opacity: progress,
               transform: 'scale(' + progress + ')',
-            }))(this.getStyleByKey(styles, 'mainTitle').progress);
+            }))(getStyleByKey(styles, 'mainTitle').progress);
 
             const subStyle = ((progress) => ({
               opacity: progress,
               top: (-1.5 * (1 - progress)) + 'em',
-            }))(this.getStyleByKey(styles, 'subTitle').progress);
+            }))(getStyleByKey(styles, 'subTitle').progress);
 
             const dividerStyle = ((progress) => ({
               height: (100 * progress) + '%'
-            }))(this.getStyleByKey(styles, 'divider').progress);
+            }))(getStyleByKey(styles, 'divider').progress);
 
             const summaryStyle = ((progress) => ({
               opacity: progress,
               transform: 'scaleX(' + progress + ')',
-            }))(this.getStyleByKey(styles, 'summary').progress);
+            }))(getStyleByKey(styles, 'summary').progress);
 
             // Aggregate the icon metadata and styles, since their markup is all
             // the same, we can just easily iterate over this to output everything.
             const icons = [
-              { progress: this.getStyleByKey(styles, 'icon1').progress, className: 'fa-envelope-o', href: 'mailto:chat@danielburgess.me', label: 'Email' },
-              { progress: this.getStyleByKey(styles, 'icon2').progress, className: 'fa-github', href: 'https://github.com/dbburgess', label: 'Github' },
-              { progress: this.getStyleByKey(styles, 'icon3').progress, className: 'fa-stack-overflow', href: 'https://stackoverflow.com/users/5191100/dbburgess', label: 'Stack Overflow' },
-              { progress: this.getStyleByKey(styles, 'icon4').progress, className: 'fa-linkedin', href: 'https://linkedin.com/in/dbburgess', label: 'LinkedIn' },
-              { progress: this.getStyleByKey(styles, 'icon5').progress, className: 'fa-twitter', href: 'https://twitter.com/dbburgess', label: 'Twitter' },
-              { progress: this.getStyleByKey(styles, 'icon6').progress, className: 'fa-facebook-official', href: 'https://facebook.com/dbburgess', label: 'Facebook' },
-              { progress: this.getStyleByKey(styles, 'icon7').progress, className: 'fa-file-text-o', href: 'https://dbburgess.github.io/resume', label: 'Résumé' },
+              { progress: getStyleByKey(styles, 'icon1').progress, className: 'fa-envelope-o', href: 'mailto:chat@danielburgess.me', label: 'Email' },
+              { progress: getStyleByKey(styles, 'icon2').progress, className: 'fa-github', href: 'https://github.com/dbburgess', label: 'Github' },
+              { progress: getStyleByKey(styles, 'icon3').progress, className: 'fa-stack-overflow', href: 'https://stackoverflow.com/users/5191100/dbburgess', label: 'Stack Overflow' },
+              { progress: getStyleByKey(styles, 'icon4').progress, className: 'fa-linkedin', href: 'https://linkedin.com/in/dbburgess', label: 'LinkedIn' },
+              { progress: getStyleByKey(styles, 'icon5').progress, className: 'fa-twitter', href: 'https://twitter.com/dbburgess', label: 'Twitter' },
+              { progress: getStyleByKey(styles, 'icon6').progress, className: 'fa-facebook-official', href: 'https://facebook.com/dbburgess', label: 'Facebook' },
+              { progress: getStyleByKey(styles, 'icon7').progress, className: 'fa-file-text-o', href: 'https://dbburgess.github.io/resume', label: 'Résumé' },
             ];
 
             return (
